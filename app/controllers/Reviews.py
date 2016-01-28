@@ -11,7 +11,10 @@ class Reviews(Controller):
 		"review" : request.form['review'],
 		"alias" : session['alias']
 		}
-
+		id_store = request.form['id_store']
+		if "'" in info['review']:
+			info['review'] = info['review'].replace("'", "''")
+		print info['review']
 		bouncer = self.models['Review'].add(info)
 
 		try: 
@@ -21,4 +24,8 @@ class Reviews(Controller):
 		except:
 			for message in bouncer['success']:
 				flash(message)
-		return redirect ("/dashboard")
+		return redirect ("/profile/" + id_store + "")
+
+		        # if "'" in info['restaurant_name']:
+          #   info['restaurant_name'] = info['restaurant_name'].replace("'", "''")
+

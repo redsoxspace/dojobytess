@@ -10,6 +10,8 @@ class User(Model):
     def verify_user(self, info):
 		EMAIL_REGEX = re.compile(r'^[a-za-z0-9\.\+_-]+@[a-za-z0-9\._-]+\.[a-za-z]*$')
 		errors = []
+		if "'" in info['alias']:
+			info['alias'] = info['alias'].replace("'", "''")
 		mailcheck = self.db.query_db("SELECT 'email' FROM users WHERE 'email' = '{}'".format(info['email']))
 		aliascheck = self.db.query_db("SELECT alias FROM users where alias = '{}'".format(info['alias']))
 		if len(info['alias']) <2: 
@@ -26,6 +28,8 @@ class User(Model):
 			errors.append('Your password must be no less than 8 characters.')
 		elif info['password'] != info['confirm']:
 			errors.append('Make sure your password matches the input in confirm password.')
+			        # if "'" in info['restaurant_name']:
+           #  info['restaurant_name'] = info['restaurant_name'].replace("'", "''")
 
 		if errors:
 			return{"status": False, "errors" :errors}
@@ -36,7 +40,7 @@ class User(Model):
 			password = info['password']
 			location = info['location']
 			hash_pw = self.bcrypt.generate_password_hash(password)
-			# dob stands for "date of birth"
+
 			query = "INSERT INTO users (alias, email, password, location, created_at, updated_at) VALUES ('{}', '{}', '{}', '{}', NOW(), NOW())".format(alias, email, hash_pw, location)
 			self.db.query_db(query)
 			return{'status': True, 'success': 'Registration successful! Please log in.', 'alias':alias}

@@ -18,4 +18,8 @@ class Pages(Controller):
 			flash(message)
 			return redirect ("/")
 		find = self.models['Review'].find()
+
 		return self.load_view('dashboard.html', restaurants = find['all_restaurants'])
+
+	def new(self):
+		return self.load_view('new.html')

@@ -1,9 +1,19 @@
+<<<<<<< HEAD
 -- MySQL Workbench Forward Engineering
+=======
+-- MySQL Workbench Synchronization
+-- Generated: 2016-01-26 17:02
+-- Model: New Model
+-- Version: 1.0
+-- Project: Name of the project
+-- Author: Benjamin Hanson
+>>>>>>> 4b4930fe76483fccd50e8eb423fa2c3be93ac163
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
+<<<<<<< HEAD
 -- -----------------------------------------------------
 -- Schema dojobyte
 -- -----------------------------------------------------
@@ -98,6 +108,16 @@ CREATE TABLE IF NOT EXISTS `dojobyte`.`reviews` (
     ON UPDATE NO ACTION)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = utf8;
+=======
+ALTER TABLE `dojobyte`.`restaurants` 
+DROP COLUMN `hated`,
+DROP COLUMN `liked`,
+ADD COLUMN `genre` VARCHAR(255) NULL DEFAULT NULL AFTER `restaurant_name`;
+
+ALTER TABLE `dojobyte`.`reviews` 
+DROP COLUMN `unhelpful`,
+DROP COLUMN `helpful`;
+>>>>>>> 4b4930fe76483fccd50e8eb423fa2c3be93ac163
 
 
 SET SQL_MODE=@OLD_SQL_MODE;

@@ -7,7 +7,11 @@
 """
 from flask import current_app, render_template, redirect, request, session, flash, jsonify
 from flask.views import View
+<<<<<<< HEAD
 # import requests
+=======
+import requests
+>>>>>>> 4b4930fe76483fccd50e8eb423fa2c3be93ac163
 from urllib import urlencode
 import importlib
 
@@ -36,4 +40,8 @@ class Controller(View):
         model = getattr(importlib.import_module('app.models.'+model_name), model_name)
         self.models[model_name] = model()
 
+<<<<<<< HEAD
 __all__ = ['Controller', 'request', 'session', 'redirect', 'flash', 'jsonify', 'urlencode']
+=======
+__all__ = ['Controller', 'request', 'session', 'redirect', 'flash', 'jsonify','requests', 'urlencode']
+>>>>>>> 4b4930fe76483fccd50e8eb423fa2c3be93ac163

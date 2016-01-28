@@ -1,7 +1,6 @@
 <html>
 <head>
-	<title>Search</title>
-  	<meta charset="utf-8">
+	<title>Add a New Restaurant</title>
     <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
     <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
@@ -27,32 +26,19 @@
       <li><a href="/logout">Log Out</a></li> 
     </ul>
   </div>
-</nav>
-<body>
-		{% with messages = get_flashed_messages() %}
-		    {% if messages%}
-		      {% for message in messages %}
+</nav>	
+<h3>Add a New Restaurant!</h3>
+	{% with messages = get_flashed_messages() %}
+		{% if messages%}
+		    {% for message in messages %}
 		        <h4>{{message}}</h4>
-		      {% endfor %}
-		    {% endif %}
-		  {% endwith %} 
-		  {{results}}
-<h3>Recently Added: </h3>
-	{% for item in new_stores['new_stores']%}
-	<div class = "boxify">
-		<p>Name: {{item['restaurant_name']}}</p>
-		<p>Genre: {{item['genre']}}</p>
-		<p><a href="/profile/{{item['id']}}">Check It Out</a></p>
-	</div>
-	{% endfor %}
-
-<h3>Find An Existing Restaurant</h3>
-<form action = "/find" method = "post">
-	<p>Name: <input type = "text" name = "name"></p>
+		    {% endfor %}
+		{% endif %}
+	{% endwith %}
+<form action = "/add_store" method = "post">
+	<p>Business Name: <input type = "text" name = "restaurant_name"></p>
 	<p>Food Genre: 		
 		<select name = "genre">
-		<optgroup label = "Choose One">
-			<option>No Genre</option>
 			<option>Other</option>
 			<option>Indian</option>
 			<option>Burgers</option>
@@ -65,18 +51,7 @@
 			<option>Sandwiches</option>
 		</optgroup>
 		</select></p>
-		<p><input type = "submit" value = "Submit"></p>
+	<p><input type = "submit" value = "Submit"></p>
 </form>
-
-{% if session['findings'] %}
-	<h3>Search Results:</h3>
-	{% for item in session['findings'] %}
-	<div class = "boxify">
-		<p>Name: {{item['restaurant_name']}}</p>
-		<p>Genre: {{item['genre']}}</p>
-		<p><a href="/profile/{{item['id']}}">Check It Out</a></p>
-	</div>
-	{% endfor %}
-{% endif %}
 </body>
 </html>

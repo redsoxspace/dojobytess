@@ -14,11 +14,7 @@ class DevelopmentDBConfig(DBConfig):
     DB_PASSWORD = 'root'
     DB_DATABASE_NAME = 'dojobyte'
     DB_HOST = 'localhost'
-<<<<<<< HEAD
     DB_PORT = 3306
-=======
-    DB_PORT = 8889
->>>>>>> 4b4930fe76483fccd50e8eb423fa2c3be93ac163
     """ unix_socket is used for connecting with MAMP. Take this out if you aren't using MAMP """
     DB_OPTIONS = {
         'unix_socket': '/Applications/MAMP/tmp/mysql/mysql.sock'
