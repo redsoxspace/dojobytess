@@ -1,0 +1,59 @@
+<html>
+  <head>
+  	<title>DojoByte Login</title>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h2 id='title'>Welcome to DojoByte!<img id='beef' src="/static/images/Beef_Ribs.jpg" class="img-circle" alt="Beef" width="304" height="236"></h2>
+		{% with messages = get_flashed_messages() %}
+		    {% if messages%}
+		      {% for message in messages %}
+		        <h4>{{message}}</h4>
+		      {% endfor %}
+		    {% endif %}
+		  {% endwith %}
+<div id = "body">
+	<!-- Registration -->
+<div id = "left">
+	<h3>Register</h3>
+	<form action = "/register" method = "post">
+		<p>Alias: <input type = "text" name = "alias"></p>
+		<p>Email: <input type = "text" name = "email"></p>
+		<p>Password: <input type = "password" name = "password"></p>
+		<p>*Password should be at least 8 characters</p>
+		<p>Confirm PW: <input type = "password" name = "confirm"></p>
+		<p>Location: 
+		<select name = "location">
+		<optgroup label = "Choose Your Location!">
+			<option>Bellevue</option>
+			<option>Dallas</option>
+			<option>Los Angeles</option>
+			<option>New York</option>
+			<option>Philippines</option>
+			<option>Silicon Valley</option>
+		</optgroup>
+		</select></p>
+		<p><input type = "submit" value = "Register"></p>
+	</form>
+</div>
+	<!-- Login -->
+<div id = "right">
+    <form action = "/login" method = "post">
+    	<h3>Login</h3>
+    	<p>Email: <input type = "text" name = "email"></p>
+    	<p>Password: <input type = "password" name = "password"></p>
+    	<p><input type = "submit" value = "Login"></p>
+    </form>
+    </div>
+
+</div>
+  </body>
+</html>
