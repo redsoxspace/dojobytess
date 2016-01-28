@@ -1,0 +1,85 @@
+<html>
+
+  <head>
+  	<meta name="viewport" content="width=device-width, initial-scale=1">
+  	<meta charset="utf-8">
+  	<title>Your DojoByte Dashboard</title>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCWyZTgsh-lNHs0k1Qnxh3rxWYOZw76Ho0"></script>
+	<script>
+	function initialize() {
+	  var mapProp = {
+	    center:new google.maps.LatLng(47.609819,-122.196547),
+	    zoom:13,
+	    mapTypeId:google.maps.MapTypeId.ROADMAP
+	  };
+	  var map=new google.maps.Map(document.getElementById("googleMap"),mapProp);
+
+	  var marker=new google.maps.Marker({
+	  position:new google.maps.LatLng(47.609819,-122.196547),
+	  // icon:'/static/images/restaurant_icon.png'
+	  });
+
+	marker.setMap(map);
+	var infowindow = new google.maps.InfoWindow({
+	  content:"You are here!"
+	  });
+
+	infowindow.open(map,marker);
+	}
+	google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+    <script>
+	$(document).ready(function() {
+			var city = ("{{session['location']}}");
+			$.get('http://api.openweathermap.org/data/2.5/weather?q='+city+'&appid=f957293af87f51fde926b1b3b08dd533', function(res) {
+
+			var farenheit = 9/5 * (res.main.temp-273) + 32;
+			var shorter = Math.round(farenheit);
+
+				$("#weather").html("<h1><strong>Today's weather:</strong> <br></h1><h2>"+res.name+"</h2><h3>"+res.weather[0].description+"</h3><h4><br>"+shorter+"</h4>")
+
+				}, 'json');
+	});
+	</script>
+  </head>
+	<body>
+	<nav class='navbar navbar-default'>
+		<div class='container-fluid'>
+			<div class='navbar-header'>
+				<a class='navbar-brand' href='/dashboard'><img src='/static/images/coding_dojo_log.png' height='180px' width='150px'></a>
+			</div>
+			<ul class='nav navbar-nav'>
+		<button type='button' class='btn btn-primary'><a href="/search">Search</a></button>
+		<button type='button' class='btn btn-primary'><a href='/add_store'>Add Store</a></button>
+		<button type='button' class='btn btn-primary'><a href='/logout'>Logout</a></button>
+	</div>
+	<div class='header'>
+		<h1>Welcome to dojobyte.com, your home away from home</h1>
+	</div>
+	<div id="left_side">
+		<h3>Hello, <strong id='color'>{{session['alias']}}</mark></strong>!</h3>
+		<div id = "weather">
+		</div>
+	</div>
+	<div id="googleMap" style="width:500px;height:380px;"></div>
+	<div class='decider_box'>
+		<div class='decider'>
+			<h2>The Decider</h2>
+				<p><button type='button' class='btn btn-primary'><a href='/decider'>Go!</a></button></p>
+		</div>
+	</div>
+</div>
+</body>
+</html>
+</body>
+</html>

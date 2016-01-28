@@ -1,0 +1,33 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/static/css/styles.css" type="text/css">
+    <title>Search</title>
+</head>
+<body>
+THIS IS THE SEARCH PAGE.
+<h3>Recently Added: </h3>
+	{% for item in new_stores['new_stores']%}
+	<div class = "boxify">
+		<p>Name: {{item['restaurant_name']}}</p>
+		<p>Genre: {{item['genre']}}</p>
+		<p>Likes: {{item['liked']}} Dislikes: {{item['hated']}}</p>
+	</div>
+	{% endfor %}
+
+<h3>Find An Existing Restaurant</h3>
+<form action = "/find" method = "post">
+	<p><input type = "text" name = "name"></p>
+	<p><input name = "genre" value = "other" type = "radio">Other</input></p>
+	<p><input  name = "genre" value = "indian" type = "radio">Indian</input></p>
+	<p><input  name = "genre" value = "burgers" type = "radio">Burgers</input></p>
+	<p><input  name = "genre" value = "asian" type = "radio">Asian</input></p>
+	<p><input  name = "genre" value = "mediterranean" type = "radio">Mediterranean</input></p>
+	<p><input  name = "genre" value = "mexican" type = "radio">Mexican</input></p>
+	<p><input  name = "genre" value = "fast food" type = "radio">Fast Food</input></p>
+	<p><input  name = "genre" value = "coffee" type = "radio">Coffee</input></p>
+	<p><input  name = "genre" value = "grocery" type = "radio">Grocery</input></p>
+	<p><input  name = "genre" value = "sandwiches" type = "radio">Sandwiches</input></p>
+	<p><input type = "submit" value = "Submit"></p>
+</form>
+</body>
+</html>

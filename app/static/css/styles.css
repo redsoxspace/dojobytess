@@ -1,0 +1,90 @@
+* {
+  font-family: tahoma;
+}
+body{
+	 background-image: 
+		linear-gradient(to top right, #00FFFF, white 74%);
+}
+
+.links{
+	width: 400px;
+	font-size: 16px;
+	margin-left: auto;
+  	margin-right: auto;
+  	text-align: center;
+}
+.links a{
+	color: darkblue;
+}
+#title{
+	width: 370px;
+	margin-left: auto;
+  	margin-right: auto;
+}
+#beef{
+	margin-top: 5%;
+	margin-left: 6%;
+}
+#right{
+	width: 20%;
+	height: 70%;
+	margin-left: 15%;
+}
+
+#left{
+	width: 20%;
+	height: 70%;
+	margin-left: 24%;
+}
+
+#right, #left{
+	display: inline-block;
+	vertical-align: top;
+}
+
+.boxify{
+	width: 20%;
+	border: solid black 3px;
+	border-collapse: collapse;
+}
+.header{
+	width: 700px;
+	margin-left: auto;
+ 	margin-right: auto;
+ 	text-align: center;
+
+}
+#weather{
+	display: block;
+}
+#left_side h3{
+	display: block;
+}
+#color{
+	color: blue;
+}
+.decider{
+	border: 1px dashed black;
+	display: inline;
+	margin-left: 1500px;
+	margin-right: auto;
+}
+.decider a{
+	color: white;
+}
+.decider_box{
+	float: right;
+	display: inline-block;
+	border: 1px solid black;
+	width: 160px;
+	text-align: center;
+	position: relative;
+	bottom: 600px;
+	right: 200px;
+}
+.links img{
+	display: inline-block;
+	position: relative;
+	right: 760px;
+}
+	
